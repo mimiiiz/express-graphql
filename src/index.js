@@ -14,11 +14,6 @@ const resolvers = {
         info: () => `This is the API of a Hackernews Clone`,
         feed: () => links
     },
-    // Link: {
-    //     id: (parent) => parent.id,
-    //     description: (parent) => parent.description,
-    //     url: (parent) => parent.url,
-    // },
     Mutation: {
         post: (parent, args) => {
             const link = {
@@ -30,15 +25,6 @@ const resolvers = {
             return link
         },
         updateLink: (parent, args) => {
-            // let found
-            // links.forEach((item, index) => {
-            //     if (item.id === args.id) {
-            //         item.url = args.url
-            //         item.description = args.description
-            //         links.splice(index, 1, item)
-            //         found = item
-            //     }
-            // })
             let found = links.find((element) => element.id === args.id);
             let foundIndex = links.findIndex((element) => element.id === args.id);
             found.url = args.url
