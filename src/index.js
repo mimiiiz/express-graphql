@@ -29,6 +29,28 @@ const resolvers = {
             links.push(link)
             return link
         },
+        updateLink: (parent, args) => {
+            // let found
+            // links.forEach((item, index) => {
+            //     if (item.id === args.id) {
+            //         item.url = args.url
+            //         item.description = args.description
+            //         links.splice(index, 1, item)
+            //         found = item
+            //     }
+            // })
+            let found = links.find((element) => element.id === args.id);
+            let foundIndex = links.findIndex((element) => element.id === args.id);
+            found.url = args.url
+            found.description = args.description
+            links[foundIndex] = found
+            return found
+        },
+        deleteLink: (parent, args) => {
+            let foundIndex = links.findIndex((element) => element.id === args.id);
+            links.splice(foundIndex, 1)
+            return
+        }
 
     }
 }
